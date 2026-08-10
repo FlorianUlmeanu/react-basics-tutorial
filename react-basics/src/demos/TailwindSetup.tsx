@@ -28,7 +28,7 @@ export function TailwindSetup() {
   return (
     <div className="mx-auto flex max-w-[720px] flex-col items-center gap-5 px-6 py-12 text-center">
       <h1>Pas 10 — Tailwind CSS</h1>
-      <p className="max-w-[480px] text-[15px] text-muted-foreground">
+      <p className="text-muted-foreground max-w-[480px] text-[15px]">
         Același card, două abordări. Comută și uită-te la <strong>dark mode</strong> (butonul din header): varianta cu
         CSS scris de mână rămâne albă, pentru că are culorile hardcodate.
       </p>
@@ -65,15 +65,15 @@ export function TailwindSetup() {
         // / border-border citesc din tokenii definiți în src/index.css
         // (@theme inline), care se schimbă odată cu clasa .dark de pe
         // <html>. Aceleași clase, altă valoare în spate, în funcție de temă.
-        <div className="w-full max-w-[420px] rounded-xl border border-border bg-card p-5 text-left">
-          <h3 className="mt-0 mb-1.5 text-[15px] font-semibold text-foreground">Card cu Tailwind</h3>
-          <p className="text-[15px] text-muted-foreground">
+        <div className="border-border bg-card w-full max-w-[420px] rounded-xl border p-5 text-left">
+          <h3 className="text-foreground mt-0 mb-1.5 text-[15px] font-semibold">Card cu Tailwind</h3>
+          <p className="text-muted-foreground text-[15px]">
             Tokeni de temă: <code>bg-card</code>, <code>text-muted-foreground</code>, <code>border-border</code>. La
             dark mode se adaptează singur — nicio schimbare de cod.
           </p>
           <button
             type="button"
-            className="mt-3 cursor-pointer rounded-lg border-none bg-primary px-5 py-2.5 font-semibold text-primary-foreground"
+            className="bg-primary text-primary-foreground mt-3 cursor-pointer rounded-lg border-none px-5 py-2.5 font-semibold"
           >
             Acțiune
           </button>
@@ -93,17 +93,17 @@ export function TailwindSetup() {
         </div>
       )}
 
-      <p className="max-w-[480px] text-[15px] text-muted-foreground">
+      <p className="text-muted-foreground max-w-[480px] text-[15px]">
         Obiecția clasică: „clasele lungi urâțesc markup-ul". Contra-argumentul practic: stilul stă lângă element (nu
         cauți prin fișiere), iar Prettier le sortează canonic, deci nu ajung dezordonate.
       </p>
 
-      <details className="group w-full overflow-hidden rounded-[10px] border border-border text-left">
-        <summary className="flex cursor-pointer list-none items-center gap-2 px-4 py-3 text-sm font-semibold text-foreground [&::-webkit-details-marker]:hidden">
-          <span className="inline-block text-muted-foreground transition-transform group-open:rotate-90">▸</span>
+      <details className="group border-border w-full overflow-hidden rounded-[10px] border text-left">
+        <summary className="text-foreground flex cursor-pointer list-none items-center gap-2 px-4 py-3 text-sm font-semibold [&::-webkit-details-marker]:hidden">
+          <span className="text-muted-foreground inline-block transition-transform group-open:rotate-90">▸</span>
           💻 Cod de reținut — setup Tailwind v4
         </summary>
-        <pre className="overflow-x-auto border-t border-border bg-muted p-4 font-mono text-[13px] leading-[150%]">
+        <pre className="border-border bg-muted overflow-x-auto border-t p-4 font-mono text-[13px] leading-[150%]">
           {`npm i tailwindcss @tailwindcss/vite
 
 // vite.config.ts

@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
+import { Moon, Sun } from "lucide-react";
 import { steps } from "@/steps";
 import { DemoTab } from "@/demos/DemoTab";
+import { Button } from "@/components/ui/button";
 
 // Ultimul pas care are o demo scrisă = pasul curent al lecției.
 const lastAvailableStep = [...steps].reverse().find(s => s.component)!.id;
@@ -25,18 +27,20 @@ function App() {
   return (
     <>
       <header id="course-header" className="relative px-6 pt-8 text-center">
-        <button
-          type="button"
+        <Button
+          variant="outline"
+          size="icon"
           onClick={() => setIsDark(d => !d)}
-          className="absolute top-8 right-6 rounded-full border border-border bg-background px-3 py-1.5 text-sm text-foreground transition-opacity hover:opacity-85"
+          className="absolute top-8 right-6"
+          aria-label={isDark ? "Comută la light mode" : "Comută la dark mode"}
         >
-          {isDark ? "🌙 Dark" : "☀️ Light"}
-        </button>
+          {isDark ? <Moon /> : <Sun />}
+        </Button>
         <h1>React Basics</h1>
         <p className="muted mx-auto">Playground care crește pas cu pas — fiecare buton e un concept.</p>
       </header>
 
-      <nav id="step-nav" className="flex flex-wrap justify-center gap-2 border-b border-border px-6 py-5">
+      <nav id="step-nav" className="border-border flex flex-wrap justify-center gap-2 border-b px-6 py-5">
         {steps.map(step => (
           <DemoTab
             key={step.id}
@@ -49,7 +53,10 @@ function App() {
         ))}
       </nav>
 
-      <section id="center" className="flex grow flex-col place-content-center place-items-center gap-6 max-lg:gap-4 max-lg:px-5 max-lg:py-8">
+      <section
+        id="center"
+        className="flex grow flex-col place-content-center place-items-center gap-6 max-lg:gap-4 max-lg:px-5 max-lg:py-8"
+      >
         {active.component ? (
           active.component()
         ) : (

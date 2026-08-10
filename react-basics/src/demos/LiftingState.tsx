@@ -15,22 +15,22 @@ type PriceCardProps = {
 // testat izolat, pentru că nu depinde de nimic din afara props-urilor.
 function PriceCard({ label, amount, currency, step = 1, onChange }: PriceCardProps) {
   return (
-    <div className="flex min-w-[200px] flex-col items-center gap-2.5 rounded-xl border border-border px-5 py-5">
-      <p className="max-w-[480px] text-[15px] text-muted-foreground">{label}</p>
-      <p className="m-0 text-[28px] font-bold text-foreground [font-variant-numeric:tabular-nums]">
+    <div className="border-border flex min-w-[200px] flex-col items-center gap-2.5 rounded-xl border px-5 py-5">
+      <p className="text-muted-foreground max-w-[480px] text-[15px]">{label}</p>
+      <p className="text-foreground m-0 text-[28px] font-bold [font-variant-numeric:tabular-nums]">
         {amount} {currency}
       </p>
       <div className="mb-1 flex gap-3">
         <button
           type="button"
-          className="cursor-pointer rounded-lg border-2 border-border bg-background px-6 py-2.5 text-[15px] font-semibold text-foreground transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2"
+          className="border-border bg-background text-foreground focus-visible:outline-primary cursor-pointer rounded-lg border-2 px-6 py-2.5 text-[15px] font-semibold transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2"
           onClick={() => onChange(amount - step)}
         >
           -{step}
         </button>
         <button
           type="button"
-          className="cursor-pointer rounded-lg border-2 border-border bg-background px-6 py-2.5 text-[15px] font-semibold text-foreground transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2"
+          className="border-border bg-background text-foreground focus-visible:outline-primary cursor-pointer rounded-lg border-2 px-6 py-2.5 text-[15px] font-semibold transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2"
           onClick={() => onChange(amount + step)}
         >
           +{step}
@@ -53,14 +53,14 @@ export function LiftingState() {
   return (
     <div className="mx-auto flex max-w-[640px] flex-col items-center gap-4 px-6 py-12 text-center">
       <h1>Pas 7 — Props & lifting state</h1>
-      <p className="max-w-[480px] text-[15px] text-muted-foreground">
+      <p className="text-muted-foreground max-w-[480px] text-[15px]">
         O singură stare în părinte, două carduri sincronizate. Fiecare card e „controlat": primește valoarea și cere
         schimbarea prin onChange. Rate: 1 RON = 5 pts.
       </p>
 
       {/* Afișează direct valoarea din părinte — dovadă vizuală că e o
           singură sursă, nu o valoare separată calculată pe fiecare card. */}
-      <p className="rounded-full border border-border px-5 py-2 text-lg font-semibold text-foreground [font-variant-numeric:tabular-nums]">
+      <p className="border-border text-foreground rounded-full border px-5 py-2 text-lg font-semibold [font-variant-numeric:tabular-nums]">
         <span aria-hidden="true">↙</span> {amount} <span aria-hidden="true">↘</span>
       </p>
 

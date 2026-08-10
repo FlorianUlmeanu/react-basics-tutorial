@@ -18,5 +18,15 @@ export default defineConfig([
     languageOptions: {
       globals: globals.browser
     }
+  },
+  {
+    // Fișierele copiate de shadcn/ui exportă și `buttonVariants` (cva) lângă
+    // componentă — util pentru a refolosi clasele în afara <Button>, dar
+    // strică regula de Fast Refresh care cere "un fișier = doar componente".
+    // Codul e al nostru (Pas 11), deci excepția e locală, nu globală.
+    files: ["src/components/ui/**/*.tsx"],
+    rules: {
+      "react-refresh/only-export-components": "off"
+    }
   }
 ]);

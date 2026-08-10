@@ -93,23 +93,23 @@ export function Timer() {
   return (
     <div className="mx-auto flex max-w-[640px] flex-col items-center gap-4 px-6 py-12 text-center">
       <h1>Pas 6 — useEffect + cleanup</h1>
-      <p className="max-w-[480px] text-[15px] text-muted-foreground">
+      <p className="text-muted-foreground max-w-[480px] text-[15px]">
         Timer pe <code>setInterval</code>, curățat corect la unmount.
       </p>
 
-      <p className="my-2 text-7xl font-bold text-foreground [font-variant-numeric:tabular-nums]">{seconds}s</p>
+      <p className="text-foreground my-2 text-7xl font-bold [font-variant-numeric:tabular-nums]">{seconds}s</p>
 
       <div className="mb-1 flex gap-3">
         <button
           type="button"
-          className="cursor-pointer rounded-lg border-2 border-transparent bg-primary px-6 py-2.5 text-[15px] font-semibold text-primary-foreground transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2"
+          className="bg-primary text-primary-foreground focus-visible:outline-primary cursor-pointer rounded-lg border-2 border-transparent px-6 py-2.5 text-[15px] font-semibold transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2"
           onClick={() => setRunning(r => !r)}
         >
           {running ? "Pauză" : "Pornește"}
         </button>
         <button
           type="button"
-          className="cursor-pointer rounded-lg border-2 border-border bg-background px-6 py-2.5 text-[15px] font-semibold text-foreground transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2"
+          className="border-border bg-background text-foreground focus-visible:outline-primary cursor-pointer rounded-lg border-2 px-6 py-2.5 text-[15px] font-semibold transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2"
           onClick={() => {
             setRunning(false);
             setSeconds(0);
@@ -119,24 +119,24 @@ export function Timer() {
         </button>
       </div>
 
-      <p className="max-w-[480px] text-[15px] text-muted-foreground">
+      <p className="text-muted-foreground max-w-[480px] text-[15px]">
         Deschide consola: fără cleanup, comutarea rapidă ar lăsa mai multe intervale active în paralel. Cu cleanup,
         mereu e exact unul.
       </p>
 
-      <div className="mt-4 flex flex-col gap-3 rounded-xl border border-dashed border-border px-6 py-5 text-left text-sm text-muted-foreground [&_strong]:text-foreground">
+      <div className="border-border text-muted-foreground [&_strong]:text-foreground mt-4 flex flex-col gap-3 rounded-xl border border-dashed px-6 py-5 text-left text-sm">
         <p>
-          <strong>🧪 Exercițiu — tracker de click-uri.</strong> La intrarea în ecran ne abonăm la click-urile pe body
-          și scriem în consolă ce s-a apăsat — tag, text (sau clase, dacă n-are text) și poziția în pagină. Telemetria
-          pe care într-o aplicație reală am trimite-o la analytics.
+          <strong>🧪 Exercițiu — tracker de click-uri.</strong> La intrarea în ecran ne abonăm la click-urile pe body și
+          scriem în consolă ce s-a apăsat — tag, text (sau clase, dacă n-are text) și poziția în pagină. Telemetria pe
+          care într-o aplicație reală am trimite-o la analytics.
         </p>
         <p>
           E un SPA — componenta poate fi demontată (schimbi ecranul, StrictMode remontează în dev) fără ca fila să se
           reîncarce, deci nimic nu curăță automat ce am pornit noi. De-asta efectul <strong>întoarce cleanup</strong>{" "}
           care face <code>removeEventListener</code>: la fiecare demontare, tracker-ul respectiv se dezabonează.
           Deschide consola — vei vedea <code>tracker #1</code> abonându-se, apoi (din <code>StrictMode</code>, care
-          montează de două ori în dev) dezabonându-se și lăsând loc lui <code>tracker #2</code>. De-acum un click
-          apare o singură dată în consolă, nu de N ori.
+          montează de două ori în dev) dezabonându-se și lăsând loc lui <code>tracker #2</code>. De-acum un click apare
+          o singură dată în consolă, nu de N ori.
         </p>
       </div>
     </div>

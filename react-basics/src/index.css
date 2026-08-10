@@ -14,10 +14,17 @@
   --muted: oklch(0.963 0.009 100);
   --muted-foreground: oklch(0.514 0.03 305.5);
   --border: oklch(0.921 0.004 301.4);
+  --input: oklch(0.921 0.004 301.4);
+  --ring: var(--primary);
   --primary: oklch(0.565 0.24 261.4); /* #0d66ff — brand */
   --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.963 0.009 100);
+  --secondary-foreground: oklch(0.13 0.017 298.9);
   --accent: oklch(0.932 0.032 261.4);
   --accent-foreground: oklch(0.565 0.24 261.4);
+  /* Roșu standard shadcn (base color "neutral") — singura culoare din temă
+     care nu urmează hue-ul brandului, ca să rămână recognoscibil ca "atenție". */
+  --destructive: oklch(0.577 0.245 27.325);
   --radius: 0.625rem;
 
   --sans: system-ui, "Segoe UI", Roboto, sans-serif;
@@ -35,10 +42,15 @@
   --muted: oklch(0.246 0.015 279.6);
   --muted-foreground: oklch(0.714 0.019 261.3);
   --border: oklch(0.311 0.018 276.4);
+  --input: oklch(1 0 0 / 15%);
+  --ring: var(--primary);
   --primary: oklch(0.673 0.174 258.5); /* variantă mai deschisă a brandului, pentru contrast pe fundal închis */
   --primary-foreground: oklch(0.206 0.012 277.8);
+  --secondary: oklch(0.246 0.015 279.6);
+  --secondary-foreground: oklch(0.967 0.003 264.5);
   --accent: oklch(0.311 0.06 261.4);
   --accent-foreground: oklch(0.673 0.174 258.5);
+  --destructive: oklch(0.704 0.191 22.216);
 }
 
 /* @theme inline expune variabilele de mai sus ca UTILITARE Tailwind:
@@ -55,10 +67,15 @@
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
   --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
   --radius-lg: var(--radius);
   --radius-md: calc(var(--radius) - 2px);
   --radius-sm: calc(var(--radius) - 4px);
