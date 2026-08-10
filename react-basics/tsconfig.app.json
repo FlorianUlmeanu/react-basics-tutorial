@@ -8,6 +8,12 @@
     "allowArbitraryExtensions": true,
     "skipLibCheck": true,
 
+    /* Path alias @/ -> src/ — doar pentru TypeScript/IDE (type-check,
+       „go to definition", autocomplete). Rezolvarea reală la runtime/build
+       e configurată separat, în vite.config.ts. TS 6 a deprecat baseUrl:
+       fără el, "paths" se rezolvă relativ la acest fișier — echivalent aici. */
+    "paths": { "@/*": ["./src/*"] },
+
     /* Bundler mode */
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,

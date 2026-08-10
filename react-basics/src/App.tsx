@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { steps } from "./steps";
-import { DemoTab } from "./demos/DemoTab";
+import { steps } from "@/steps";
+import { DemoTab } from "@/demos/DemoTab";
 import "./App.css";
 
 // Ultimul pas care are o demo scrisă = pasul curent al lecției.
