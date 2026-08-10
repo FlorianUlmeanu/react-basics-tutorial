@@ -1,3 +1,70 @@
+#course-header {
+  text-align: center;
+  padding: 32px 24px 0;
+
+  h1 {
+    margin-bottom: 4px;
+  }
+}
+
+#step-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--border);
+}
+
+.step-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  cursor: pointer;
+  transition: opacity 0.2s;
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.45;
+  }
+
+  &:not(:disabled):hover {
+    opacity: 0.85;
+  }
+
+  &.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: white;
+  }
+}
+
+.step-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 4px;
+  border-radius: 999px;
+  background: var(--accent-bg);
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.step-pill.active .step-badge {
+  background: rgba(255, 255, 255, 0.25);
+  color: white;
+}
+
 #center {
   display: flex;
   flex-direction: column;
@@ -79,6 +146,42 @@
   background: var(--bg);
   color: var(--text-h);
   border-color: var(--border);
+}
+
+.lifting-source {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-h);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 8px 20px;
+  font-variant-numeric: tabular-nums;
+}
+
+.lifting-cards {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.price-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  min-width: 200px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.price-amount {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-h);
+  margin: 0;
+  font-variant-numeric: tabular-nums;
 }
 
 .exercise-box {
