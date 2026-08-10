@@ -78,9 +78,16 @@ export function Timer() {
 
     document.body.addEventListener("click", onBodyClick);
 
-    // Fără return aici — deocamdată. Nu ne dezabonăm încă, intenționat: îl
-    // adăugăm împreună la curs, după ce vedem în consolă ce se întâmplă
-    // fără el (vezi cutia de mai jos).
+    // Cleanup: la unmount (părăsești ecranul), React apelează asta și
+    // scoate handler-ul de pe <body>. Fără el, listener-ul rămâne agățat
+    // pentru totdeauna — la fiecare remount al componentei s-ar mai adăuga
+    // unul, iar un singur click ar declanșa N handlere active în paralel
+    // (exact ce s-a văzut în consolă mai devreme, cu tracker #1 și #2).
+    return () => {
+      subscriptionCount -= 1;
+      console.log(`[tracker #${trackerId}] cleanup → removeEventListener (${subscriptionCount} abonamente active)`);
+      document.body.removeEventListener("click", onBodyClick);
+    };
   }, []);
 
   return (
@@ -117,14 +124,15 @@ export function Timer() {
         <p>
           <strong>🧪 Exercițiu — tracker de click-uri.</strong> La intrarea în ecran ne abonăm la click-urile pe body
           și scriem în consolă ce s-a apăsat — tag, text (sau clase, dacă n-are text) și poziția în pagină. Telemetria
-          pe care într-o aplicație reală am trimite-o la analytics. <strong>Dezabonarea o adăugăm împreună</strong>,
-          la curs.
+          pe care într-o aplicație reală am trimite-o la analytics.
         </p>
         <p>
-          Cu consola deschisă: dă click în pagină, treci pe alt tab, revino aici și dă din nou click →{" "}
-          <strong>același click apare de mai multe ori</strong>, o dată pentru fiecare tracker rămas activ. Nimic nu
-          crapă (handler-ul doar citește evenimentul), doar că același click ar ajunge de N ori în analytics. În dev,{" "}
-          <code>StrictMode</code> montează componenta de două ori, deci pornim deja de la 2.
+          E un SPA — componenta poate fi demontată (schimbi ecranul, StrictMode remontează în dev) fără ca fila să se
+          reîncarce, deci nimic nu curăță automat ce am pornit noi. De-asta efectul <strong>întoarce cleanup</strong>{" "}
+          care face <code>removeEventListener</code>: la fiecare demontare, tracker-ul respectiv se dezabonează.
+          Deschide consola — vei vedea <code>tracker #1</code> abonându-se, apoi (din <code>StrictMode</code>, care
+          montează de două ori în dev) dezabonându-se și lăsând loc lui <code>tracker #2</code>. De-acum un click
+          apare o singură dată în consolă, nu de N ori.
         </p>
       </div>
     </div>
