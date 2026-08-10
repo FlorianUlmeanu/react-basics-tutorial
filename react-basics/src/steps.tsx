@@ -5,6 +5,7 @@ import { Timer } from "@/demos/Timer";
 import { LiftingState } from "@/demos/LiftingState";
 import { DemoMenu } from "@/demos/DemoMenu";
 import { PathAlias } from "@/demos/PathAlias";
+import { TailwindSetup } from "@/demos/TailwindSetup";
 
 export type Step = {
   id: number;
@@ -24,7 +25,7 @@ export const steps: Step[] = [
   { id: 7, label: "Props & lifting state", component: () => <LiftingState /> },
   { id: 8, label: "Meniu de demo-uri", component: () => <DemoMenu /> },
   { id: 9, label: "Path alias @/", component: () => <PathAlias /> },
-  { id: 10, label: "Tailwind CSS" },
+  { id: 10, label: "Tailwind CSS", component: () => <TailwindSetup /> },
   { id: 11, label: "shadcn/ui" },
   { id: 12, label: "Custom hooks" },
   { id: 13, label: "useContext (stare globală)" }

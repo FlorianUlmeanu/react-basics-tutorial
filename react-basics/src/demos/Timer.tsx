@@ -91,21 +91,25 @@ export function Timer() {
   }, []);
 
   return (
-    <div className="timer-demo">
+    <div className="mx-auto flex max-w-[640px] flex-col items-center gap-4 px-6 py-12 text-center">
       <h1>Pas 6 — useEffect + cleanup</h1>
-      <p className="muted">
+      <p className="max-w-[480px] text-[15px] text-muted-foreground">
         Timer pe <code>setInterval</code>, curățat corect la unmount.
       </p>
 
-      <p className="timer-display">{seconds}s</p>
+      <p className="my-2 text-7xl font-bold text-foreground [font-variant-numeric:tabular-nums]">{seconds}s</p>
 
-      <div className="timer-buttons">
-        <button type="button" className="btn-primary" onClick={() => setRunning(r => !r)}>
+      <div className="mb-1 flex gap-3">
+        <button
+          type="button"
+          className="cursor-pointer rounded-lg border-2 border-transparent bg-primary px-6 py-2.5 text-[15px] font-semibold text-primary-foreground transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2"
+          onClick={() => setRunning(r => !r)}
+        >
           {running ? "Pauză" : "Pornește"}
         </button>
         <button
           type="button"
-          className="btn-secondary"
+          className="cursor-pointer rounded-lg border-2 border-border bg-background px-6 py-2.5 text-[15px] font-semibold text-foreground transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2"
           onClick={() => {
             setRunning(false);
             setSeconds(0);
@@ -115,12 +119,12 @@ export function Timer() {
         </button>
       </div>
 
-      <p className="muted">
+      <p className="max-w-[480px] text-[15px] text-muted-foreground">
         Deschide consola: fără cleanup, comutarea rapidă ar lăsa mai multe intervale active în paralel. Cu cleanup,
         mereu e exact unul.
       </p>
 
-      <div className="exercise-box">
+      <div className="mt-4 flex flex-col gap-3 rounded-xl border border-dashed border-border px-6 py-5 text-left text-sm text-muted-foreground [&_strong]:text-foreground">
         <p>
           <strong>🧪 Exercițiu — tracker de click-uri.</strong> La intrarea în ecran ne abonăm la click-urile pe body
           și scriem în consolă ce s-a apăsat — tag, text (sau clase, dacă n-are text) și poziția în pagină. Telemetria

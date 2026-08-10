@@ -21,45 +21,52 @@ function MiniMenu() {
   const active = miniDemos.find(d => d.id === activeId) ?? miniDemos[0];
 
   return (
-    <div className="mini-menu">
-      <div className="mini-menu-tabs">
+    <div className="flex w-full max-w-[460px] flex-col gap-2.5">
+      <div className="flex justify-center gap-2">
         {miniDemos.map(demo => (
           <button
             key={demo.id}
             type="button"
-            className={["mini-menu-tab", demo.id === activeId && "active"].filter(Boolean).join(" ")}
             onClick={() => setActiveId(demo.id)}
+            className={[
+              "cursor-pointer rounded-full border px-4 py-2 text-sm font-medium transition-opacity hover:opacity-85",
+              demo.id === activeId
+                ? "border-primary bg-primary text-primary-foreground"
+                : "border-border bg-background text-muted-foreground"
+            ].join(" ")}
           >
             {demo.label}
           </button>
         ))}
       </div>
-      <div className="mini-menu-content">{active.content}</div>
+      <div className="rounded-[10px] border border-border px-[18px] py-3.5 text-left text-foreground">
+        {active.content}
+      </div>
     </div>
   );
 }
 
 export function DemoMenu() {
   return (
-    <div className="demo-menu">
+    <div className="mx-auto flex max-w-[720px] flex-col items-center gap-5 px-6 py-12 text-center">
       <h1>Pas 8 — Meniu de demo-uri</h1>
-      <p className="muted">
+      <p className="max-w-[480px] text-[15px] text-muted-foreground">
         Tiparul: un <strong>array de demo-uri</strong> (datele) + un <strong>id activ</strong> (starea). UI-ul se derivă
         din ele — nu ținem în state și lista, și elementul selectat.
       </p>
 
       <MiniMenu />
 
-      <div className="demo-menu-explain">
-        <div className="demo-menu-card">
-          <h3>Ce e local (state)</h3>
-          <p className="muted">
+      <div className="grid w-full grid-cols-2 gap-4 max-sm:grid-cols-1">
+        <div className="rounded-xl border border-border px-5 py-[18px] text-left">
+          <h3 className="mt-0 mb-1.5 text-[15px] text-foreground">Ce e local (state)</h3>
+          <p className="max-w-[480px] text-[15px] text-muted-foreground">
             În demo-ul ăsta, <code>activeId</code> trăiește într-un <code>useState</code> → la refresh se pierde.
           </p>
         </div>
-        <div className="demo-menu-card">
-          <h3>Ce e global (context)</h3>
-          <p className="muted">
+        <div className="rounded-xl border border-border px-5 py-[18px] text-left">
+          <h3 className="mt-0 mb-1.5 text-[15px] text-foreground">Ce e global (context)</h3>
+          <p className="max-w-[480px] text-[15px] text-muted-foreground">
             În aplicația reală, pasul activ și tema stau în context și se salvează în <code>localStorage</code> (
             <code>react-basics:active-step</code>, <code>react-basics:theme</code>) → la refresh rămân. Cum se
             construiește un context: <strong>Pas 13</strong>.
@@ -67,14 +74,17 @@ export function DemoMenu() {
         </div>
       </div>
 
-      <p className="muted">
+      <p className="max-w-[480px] text-[15px] text-muted-foreground">
         Butoanele de sus au numărul pasului într-un „badge" — un <code>{"<span>"}</code> poziționat absolut peste buton.
         Detaliu de UI, dar util: numele conceptului rămâne lizibil, numărul stă în colț.
       </p>
 
-      <details className="code-box">
-        <summary>💻 Cod de reținut — registru + id activ</summary>
-        <pre>
+      <details className="group w-full overflow-hidden rounded-[10px] border border-border text-left">
+        <summary className="flex cursor-pointer list-none items-center gap-2 px-4 py-3 text-sm font-semibold text-foreground [&::-webkit-details-marker]:hidden">
+          <span className="inline-block text-muted-foreground transition-transform group-open:rotate-90">▸</span>
+          💻 Cod de reținut — registru + id activ
+        </summary>
+        <pre className="overflow-x-auto border-t border-border bg-muted p-4 font-mono text-[13px] leading-[150%]">
           {`const demos = [{ id: "counter", step: 2, title: "useState", element: <Counter /> }, ...];
 
 const [activeId, setActiveId] = useState(demos[0].id);
