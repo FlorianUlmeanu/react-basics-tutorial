@@ -3,6 +3,7 @@ import { Counter } from "./demos/Counter";
 import { PrettierFormat } from "./demos/PrettierFormat";
 import { Timer } from "./demos/Timer";
 import { LiftingState } from "./demos/LiftingState";
+import { DemoMenu } from "./demos/DemoMenu";
 
 export type Step = {
   id: number;
@@ -20,7 +21,7 @@ export const steps: Step[] = [
   { id: 5, label: "Prettier", component: () => <PrettierFormat /> },
   { id: 6, label: "useEffect + cleanup", component: () => <Timer /> },
   { id: 7, label: "Props & lifting state", component: () => <LiftingState /> },
-  { id: 8, label: "Meniu de demo-uri" },
+  { id: 8, label: "Meniu de demo-uri", component: () => <DemoMenu /> },
   { id: 9, label: "Path alias @/" },
   { id: 10, label: "Tailwind CSS" },
   { id: 11, label: "shadcn/ui" },

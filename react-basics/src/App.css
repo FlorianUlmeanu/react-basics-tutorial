@@ -17,9 +17,7 @@
 }
 
 .step-pill {
-  display: flex;
-  align-items: center;
-  gap: 8px;
+  position: relative;
   font-size: 14px;
   font-weight: 500;
   padding: 8px 14px;
@@ -46,7 +44,14 @@
   }
 }
 
+/* Poziționat absolut față de .step-pill (position: relative) — se
+   suprapune peste colțul butonului în loc să-i împingă textul, ca numele
+   conceptului să rămână lizibil. .step-pill trebuie să NU aibă overflow:
+   hidden, altfel badge-ul ar fi decupat. */
 .step-badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -54,6 +59,7 @@
   height: 20px;
   padding: 0 4px;
   border-radius: 999px;
+  border: 2px solid var(--bg);
   background: var(--accent-bg);
   color: var(--accent);
   font-size: 12px;
@@ -61,7 +67,7 @@
 }
 
 .step-pill.active .step-badge {
-  background: rgba(255, 255, 255, 0.25);
+  background: var(--accent);
   color: white;
 }
 
@@ -148,6 +154,11 @@
   border-color: var(--border);
 }
 
+.btn-muted {
+  background: var(--code-bg);
+  color: var(--text-h);
+}
+
 .lifting-source {
   font-size: 18px;
   font-weight: 600;
@@ -182,6 +193,140 @@
   color: var(--text-h);
   margin: 0;
   font-variant-numeric: tabular-nums;
+}
+
+.demo-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 48px 24px;
+  text-align: center;
+
+  h1 {
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: normal;
+    margin: 0;
+    color: var(--text-h);
+  }
+}
+
+.mini-menu {
+  width: 100%;
+  max-width: 460px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.mini-menu-tabs {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.mini-menu-tab {
+  font-size: 14px;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  cursor: pointer;
+  transition: opacity 0.2s;
+
+  &:hover {
+    opacity: 0.85;
+  }
+
+  &.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: white;
+  }
+}
+
+.mini-menu-content {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 18px;
+  text-align: left;
+  color: var(--text-h);
+}
+
+.demo-menu-explain {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  width: 100%;
+
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.demo-menu-card {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 18px 20px;
+  text-align: left;
+
+  h3 {
+    margin: 0 0 6px;
+    font-size: 15px;
+    color: var(--text-h);
+  }
+}
+
+.code-box {
+  width: 100%;
+  text-align: left;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+
+  summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 12px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-h);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    &::-webkit-details-marker {
+      display: none;
+    }
+
+    &::before {
+      content: "▸";
+      display: inline-block;
+      color: var(--text);
+      transition: transform 0.15s;
+    }
+  }
+
+  &[open] summary::before {
+    transform: rotate(90deg);
+  }
+
+  pre {
+    margin: 0;
+    padding: 16px;
+    background: var(--code-bg);
+    font-family: var(--mono);
+    font-size: 13px;
+    line-height: 150%;
+    overflow-x: auto;
+    white-space: pre;
+    border-top: 1px solid var(--border);
+  }
 }
 
 .exercise-box {

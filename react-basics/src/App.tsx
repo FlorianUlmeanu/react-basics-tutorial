@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { steps } from "./steps";
+import { DemoTab } from "./demos/DemoTab";
 import "./App.css";
 
 // Ultimul pas care are o demo scrisă = pasul curent al lecției.
@@ -18,21 +19,23 @@ function App() {
 
       <nav id="step-nav">
         {steps.map(step => (
-          <button
+          <DemoTab
             key={step.id}
-            type="button"
-            className={`step-pill${step.id === activeId ? " active" : ""}`}
+            label={step.label}
+            step={step.id}
+            active={step.id === activeId}
             disabled={!step.component}
             onClick={() => setActiveId(step.id)}
-          >
-            {step.label}
-            <span className="step-badge">{step.id}</span>
-          </button>
+          />
         ))}
       </nav>
 
       <section id="center">
-        {active.component ? active.component() : <p className="muted">Pasul „{active.label}" nu are încă o demo scrisă.</p>}
+        {active.component ? (
+          active.component()
+        ) : (
+          <p className="muted">Pasul „{active.label}" nu are încă o demo scrisă.</p>
+        )}
       </section>
     </>
   );

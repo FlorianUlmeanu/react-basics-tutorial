@@ -27,4 +27,4 @@ npm run dev
 - [docs/requirements.md](docs/requirements.md) — the spec: scope, way of working, architecture, and the ordered concept path (in Romanian).
 - [CLAUDE.md](CLAUDE.md) — instructions for AI assistants working in this repo. `.github/copilot-instructions.md` is generated from it by [scripts/sync-ai-instructions.sh](scripts/sync-ai-instructions.sh) — don't edit it by hand.
 Base on
-https://nmatei.github.io/web-intro-presentation/react-basics/ 
+https://nmatei.github.io/web-intro-presentation/react-basics/ toate drepturile de folosire ale lor.
