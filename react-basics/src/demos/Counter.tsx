@@ -1,20 +1,20 @@
-import { useState } from 'react'
+import { useState } from "react";
 
 // Counter e o FUNCȚIE, nu un obiect cu stare persistentă.
 // React o re-EXECUTĂ de fiecare dată când setCount schimbă starea,
 // iar `count` returnat de useState e mereu valoarea curentă din acea randare.
 export function Counter() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
   return (
     <div>
-      <p style={{ fontSize: '4rem', margin: 0 }}>{count}</p>
+      <p style={{ fontSize: "4rem", margin: 0 }}>{count}</p>
 
-      <button type="button" onClick={() => setCount((c) => c + 1)}>
+      <button type="button" onClick={() => setCount(c => c + 1)}>
         +1
       </button>
 
-      <button type="button" onClick={() => setCount((c) => c - 1)}>
+      <button type="button" onClick={() => setCount(c => c - 1)}>
         -1
       </button>
 
@@ -25,5 +25,5 @@ export function Counter() {
         Reset
       </button>
     </div>
-  )
+  );
 }

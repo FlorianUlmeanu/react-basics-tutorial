@@ -1,0 +1,5 @@
+{
+    "editor.defaultFormatter": "vscode.typescript-language-features",
+    "files.autoSave": "onFocusChange",
+    "editor.formatOnSave": true
+}
