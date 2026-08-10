@@ -2,6 +2,7 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
+import { Counter } from './demos/Counter'
 import './App.css'
 
 function TestButton() {
@@ -38,6 +39,8 @@ function App() {
         >
           Count is {count}
         </button>
+
+        <Counter />
       </section>
 
       <div className="ticks"></div>

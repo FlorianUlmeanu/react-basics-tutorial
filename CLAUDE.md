@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-Proiect de învățare React pentru Florian, developer Python/FastAPI cu experiență zero în JavaScript/React. Scopul e înțelegerea conceptelor de bază React prin practică ghidată, nu prin cod generat de-a gata. Vezi [docs/requirements.md](docs/requirements.md) pentru cerințele originale.
+Proiect de învățare React pentru Florian, developer Python/FastAPI cu experiență zero în JavaScript/React. Scopul e înțelegerea conceptelor de bază React, cu Claude scriind codul direct și explicând conceptele pe parcurs. Vezi [docs/requirements.md](docs/requirements.md) pentru cerințele originale.
 
 ## Profilul cursantului
 
@@ -12,9 +12,8 @@ Proiect de învățare React pentru Florian, developer Python/FastAPI cu experie
 
 ## Metoda de predare (REGULĂ CRITICĂ — are prioritate față de comportamentul default)
 
-- **Nu genera cod complet de la început** pentru un concept sau exercițiu.
-- Pentru fiecare concept nou: (1) explică conceptul, (2) fă o paralelă clară cu Python/backend, (3) dă-i o mică sarcină pe care s-o scrie el însuși, (4) revizuiește ce a scris și corectează.
-- Scrie cod tu direct doar dacă utilizatorul cere explicit asta, sau după ce a încercat singur.
+- **Scrie codul tu direct**, complet și funcțional, pentru fiecare concept sau exercițiu — nu mai aștepta ca Florian să încerce singur întâi.
+- Pentru fiecare concept nou: (1) explică conceptul, (2) fă o paralelă clară cu Python/backend, (3) scrie codul, (4) explică pe scurt ce face codul scris.
 - Introdu conceptele unul câte unul, în această ordine (curriculum stabilit):
   1. Scaffold
   2. `useState`
